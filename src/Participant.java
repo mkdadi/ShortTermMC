@@ -20,6 +20,16 @@ public class Participant
     /**
      * Constructor for objects of class participant
      */
+    public Participant()
+    {
+        // initialise instance variables
+        this.name="";
+        this.address="";//Address to be stored in other methods.
+        this.phone="nophone!";
+        this.organisation="";
+        this.email="default@mail.id";
+    }
+    
     public Participant(String name,String phone,String orgstn,String mailid)
     {
         // initialise instance variables
@@ -37,10 +47,9 @@ public class Participant
      * @return     the sum of x and y 
      */
     public
-    void add()
+    void add(Scanner input)
     {
     	int error=1;
-    	Scanner input=new Scanner(System.in);
 		System.out.print("Enter Name: ");
     	this.name=input.nextLine();
     	while(error==1)
@@ -51,6 +60,7 @@ public class Participant
 	    		{
 	    			System.out.print("Not a Valid Phone Number!\n");
 	    			error=1;
+	    			continue;
 	    		}
 	    	for(int i=0;i<this.phone.length();i++)
 	    	{
@@ -83,6 +93,5 @@ public class Participant
     	this.organisation=input.nextLine();
     	System.out.print("Enter Address(Press enter only after writing Total Address): ");
     	this.address=input.nextLine();
-    	input.close();
     }
 }

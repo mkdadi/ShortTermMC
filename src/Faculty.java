@@ -20,6 +20,16 @@ public class Faculty
     /**
      * Constructor for objects of class faculty
      */
+    public Faculty()
+    {
+        // initialize instance variables
+        this.name="";
+        this.phone="nophone!";
+        this.mailId="default@mail.id";
+        this.department="";
+        this.address="";//Address to be stored in other methods
+    }
+    
     public Faculty(String name,String phone,String mailid,String dept)
     {
         // initialize instance variables
@@ -38,10 +48,9 @@ public class Faculty
      * @return	void 
      */
     public
-    void add()
+    void add(Scanner input)
     {
     	int error=1;
-    	Scanner input=new Scanner(System.in);
 		System.out.print("Enter Name: ");
     	this.name=input.nextLine();
     	while(error==1)
@@ -52,6 +61,7 @@ public class Faculty
 	    		{
 	    			System.out.print("Not a Valid Phone Number!\n");
 	    			error=1;
+	    			continue;
 	    		}
 	    	for(int i=0;i<this.phone.length();i++)
 	    	{
@@ -84,6 +94,5 @@ public class Faculty
     	this.department=input.nextLine();
     	System.out.print("Enter Address(Press enter only after writing Total Address): ");
     	this.address=input.nextLine();
-    	input.close();
     }
 }

@@ -17,9 +17,11 @@ public class Course
 	public String name;
 	public int fee;
 	public LocalDate startDate;
-	public Duration duration;
+	public int duration;//Assuming duration in days
 	public Faculty[] teachers;
+	public int teacher_no;
 	public Participant[] students;
+	public int student_no;
 	
     /**
      * Constructor for objects of class Course
@@ -30,8 +32,10 @@ public class Course
     	this.name=name;
     	this.fee=fee;
     	this.startDate=LocalDate.of(year, month, day);
-    	teachers=new Faculty[LIMIT+1];
-    	students=new Participant[LIMIT];
+    	this.teachers=null;
+    	this.teacher_no=0;
+    	this.students=null;
+    	this.student_no=0;
     }
 
     /**
@@ -41,16 +45,14 @@ public class Course
      * @return     Void 
      */
     public 
-    void getDuration()
+    void getDuration(Scanner input)
     {
     	System.out.print("Duration of the Course in Days: ");
-    	int no;
-    	Scanner input=new Scanner(System.in);
     	while(true)
     	{
 	    	try
 	    	{
-	    		no=input.nextInt();
+	        	this.duration=input.nextInt();
 	    		input.nextLine();
 	    	}
 	    	catch(InputMismatchException mm)
@@ -61,9 +63,6 @@ public class Course
 	    	}
 	    	break;
     	}
-    	if(input!=null)
-    		input.close();
-    	this.duration=Duration.ofDays(no);
     }
     
     /**
@@ -73,10 +72,9 @@ public class Course
      * @return     Void 
      */
     public 
-    void addTeachers()
+    void addTeachers(Scanner input)
     {
     	System.out.println("No of Faculty Members(Coordinator and TA's included): ");
-    	Scanner input=new Scanner(System.in);
     	int no;
     	while(true)
     	{
@@ -99,13 +97,14 @@ public class Course
 	    		continue;
 	    	}
     	}
+    	this.teacher_no=no;
 		Faculty[] teachers=new Faculty[no];
     	for(int i=0;i<no;i++)
     	{
-    		teachers[i].add();
+    		teachers[i]=new Faculty();
+    		teachers[i].add(input);
+    		if(i!=no-1)	System.out.print("\nNext one..: \n");
     	}
-    	if(input!=null)
-    		input.close();
     	this.teachers=teachers;
     }
     
@@ -116,10 +115,9 @@ public class Course
      * @return     Void 
      */
     public 
-    void addParticipants()
+    void addParticipants(Scanner input)
     {
     	System.out.println("No of Participants(max of "+Integer.toString(LIMIT)+"): ");
-    	Scanner input=new Scanner(System.in);
     	int no;
     	while(true)
     	{
@@ -142,13 +140,14 @@ public class Course
 	    		continue;
 	    	}
     	}
+    	this.student_no=no;
 		Participant[] students=new Participant[no];
     	for(int i=0;i<no;i++)
     	{
-    		students[i].add();
+    		students[i]=new Participant();
+    		students[i].add(input);
+    		if(i!=no-1)	System.out.print("\nNext one..: \n");
     	}
-    	if(input!=null)
-    		input.close();
     	this.students=students;
     }
 }
