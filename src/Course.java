@@ -74,7 +74,7 @@ public class Course
     public 
     void addTeachers(Scanner input)
     {
-    	System.out.println("No of Faculty Members(Coordinator and TA's included): ");
+    	System.out.print("No of Faculty Members(Coordinator and TA's included): ");
     	int no;
     	while(true)
     	{
@@ -85,6 +85,7 @@ public class Course
 	    	}
 	    	catch(InputMismatchException mm)
 	    	{
+	    		input.nextLine();
 	    		System.out.print(mm+"\nEnter Valid Integer!\n"
 	    				+ "No of Faculty Members(Coordinator and TA's included): ");
 	    		continue;
@@ -117,7 +118,7 @@ public class Course
     public 
     void addParticipants(Scanner input)
     {
-    	System.out.println("No of Participants(max of "+Integer.toString(LIMIT)+"): ");
+    	System.out.print("No of Participants(max of "+Integer.toString(LIMIT)+"): ");
     	int no;
     	while(true)
     	{
@@ -128,6 +129,7 @@ public class Course
 	    	}
 	    	catch(InputMismatchException mm)
 	    	{
+	    		input.nextLine();
 	    		System.out.print(mm+"\nEnter Valid Integer!\n"
 	    				+ "No of Participants(max of "+Integer.toString(LIMIT)+"): ");
 	    		continue;
