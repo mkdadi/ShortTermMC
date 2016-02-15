@@ -1,8 +1,8 @@
-package src;  
+package src;
 
-import java.time.*;
-import java.util.*;
-
+import java.time.LocalDate;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * This is class for Courses and it dependencies
@@ -18,53 +18,38 @@ public class Course
 	public int fee;
 	public LocalDate startDate;
 	public int duration;//Assuming duration in days
-	public Faculty[] teachers;
+	public Faculty[] teachers=new Faculty[LIMIT+1];
 	public int teacher_no;
-	public Participant[] students;
+	public Participant[] students=new Participant[LIMIT];
 	public int student_no;
 	
     /**
      * Constructor for objects of class Course
      */
     public 
-    Course(String name,int fee,int day,int month,int year)
+    Course(String name,int fee,LocalDate date)
     {
     	this.name=name;
     	this.fee=fee;
-    	this.startDate=LocalDate.of(year, month, day);
+    	this.startDate=date;
     	this.teachers=null;
     	this.teacher_no=0;
     	this.students=null;
     	this.student_no=0;
     }
-
-    /**
-     * Adds the Duration detail to the Course Object
-     * 
-     * @param  Void
-     * @return     Void 
-     */
     
-    public 
-    void getDuration(Scanner input)
+    /**
+     * Default Constructor for the class Course
+     */
+    public
+    Course()
     {
-    	System.out.print("Duration of the Course in Days: ");
-    	while(true)
-    	{
-	    	try
-	    	{
-	        	this.duration=input.nextInt();
-	    		input.nextLine();
-	    	}
-	    	catch(InputMismatchException mm)
-	    	{
-	    		input.nextLine();
-	    		System.out.print(mm+"\nEnter Valid Integer!\n"
-	    				+ "Duration of the Course in Days: ");
-	    		continue;
-	    	}
-	    	break;
-    	}
+    	this.name=null;
+    	this.fee=0;
+    	this.duration=0;
+    	this.startDate=LocalDate.now();
+    	this.teacher_no=0;
+    	this.student_no=0;
     }
     
     /**
@@ -101,12 +86,13 @@ public class Course
 	    	}
     	}
     	this.teacher_no=no;
-		Faculty[] teachers=new Faculty[no];
+		Faculty[] teachers=new Faculty[LIMIT+1];
+		if(no!=0)System.out.print("Co-ordinator: \n");
     	for(int i=0;i<no;i++)
     	{
     		teachers[i]=new Faculty();
     		teachers[i].add(input);
-    		if(i!=no-1)	System.out.print("\nNext one..: \n");
+    		if(i!=no-1)	System.out.print("\nFaculty .."+Integer.toString(i)+": \n");
     	}
     	this.teachers=teachers;
     }
@@ -145,7 +131,7 @@ public class Course
 	    	}
     	}
     	this.student_no=no;
-		Participant[] students=new Participant[no];
+		Participant[] students=new Participant[LIMIT];
     	for(int i=0;i<no;i++)
     	{
     		students[i]=new Participant();
