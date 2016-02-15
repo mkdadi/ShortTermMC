@@ -1,7 +1,5 @@
-compile: src/makefile
-	@echo "Proceeding to Compilation"
-	cd src;make
-	@sleep 5
-	@echo "Run the Program by the command java 'src.STCM'"
+install: src/makefile
+	cd src
+	make
 clean:
 	cd src;make clean

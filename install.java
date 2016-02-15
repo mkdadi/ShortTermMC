@@ -24,7 +24,7 @@ public class install {
 		File faculty_dir=new File("./Data/Faculties/");
 		File student_dir=new File("./Data/Students/");
 		try{
-			course_dir.mkdirs();//To create directories and files required for the program
+			course_dir.mkdirs();
 			System.out.print("Created Directories Data/ and Data/Courses/ \n");
 			faculty_dir.mkdirs();
 			System.out.print("Created Directory Data/Faculties/ \n");

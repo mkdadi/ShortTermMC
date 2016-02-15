@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Scanner;
-
 /**
  * This Class defines the Faculty object for courses 
  * 
@@ -46,24 +44,4 @@ public class Faculty
         this.department=dept;
         this.address="";
     }
-    
-    /**
-     * Method to add a new faculty to a course
-     * 
-     * @param input Scanner for taking inputs
-     */
-    
-    public 
-    void add(Scanner input)
-    {
-    	System.out.print("Enter Name: ");
-    	this.name=input.nextLine();
-    	System.out.print("Enter Phone Number: ");
-    	this.phone=STCM.getPhone(input);
-    	System.out.print("Enter Mail ID: ");
-    	this.mailId=STCM.getMail(input);
-    	System.out.print("Enter Department: ");
-    	this.department=input.nextLine();
-    	System.out.print("Enter Address(Press enter only after writing Total Address): ");
-    	this.address=input.nextLine();}
 }

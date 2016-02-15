@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Scanner;
-
 /**
  * This class defines the Participant object and its methods for the courses 
  * 
@@ -40,26 +38,5 @@ public class Participant
         this.phone=phone;
         this.organisation=orgstn;
         this.email=mailid;
-    }
-    
-    /**
-     * Method to add a new Participant to a course
-     * 
-     * @param input Scanner for taking inputs
-     */
-    
-    public 
-    void add(Scanner input)
-    {
-    	System.out.print("Enter Name: ");
-    	this.name=input.nextLine();
-    	System.out.print("Enter Phone Number: ");
-    	this.phone=STCM.getPhone(input);
-    	System.out.print("Enter Mail ID: ");
-    	this.email=STCM.getMail(input);
-    	System.out.print("Enter Organisation: ");
-    	this.organisation=input.nextLine();
-    	System.out.print("Enter Address(Press enter only after writing Total Address): ");
-    	this.address=input.nextLine();
     }
 }
