@@ -1,5 +1,4 @@
-install: src/makefile
-	cd src
-	make
+install:
+	@cd src;make
 clean:
-	cd src;make clean
+	@cd src;make clean
